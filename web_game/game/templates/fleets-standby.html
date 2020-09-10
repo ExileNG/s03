@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% load humanize %}
+{% block content %}
+<div id="fleets">
+<table class="default" width="450">
+<tr class="header">
+	<td>Planète</td><td>Vaisseaux</td>
+</tr>
+
+{% for planet in planets %}
+<tr class="smallitem">
+	<td><b><a href="/game/orbit/?planet={{planet.planetid}}">{{planet.planetname}}</a>&nbsp;<a href="/game/map/?g={{planet.g}}&s={{planet.s}}&p={{planetp}}">({{planet.g}}.{{planet.s}}.{{planet.p}})</a></b></td>
+	<td align=left>{% for ship in planet.ships %}<div>{{ship.ship}} x{{ship.quantity|intcomma}}
+	</div>{% endfor %}
+	</td>
+</tr>
+{% endfor %}
+{% if noships %}
+<tr class="smallitem">
+	<td colspan="3" align="center">Aucun vaisseau en attente</td>
+</tr>
+{% endif %}
+</table>
+</div>
+{% endblock %}
