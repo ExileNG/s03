@@ -14,7 +14,7 @@ from .confidential import *
 #-------------------------------------------------------------------------------
 DEBUG = False
 #-------------------------------------------------------------------------------
-ALLOWED_HOSTS = ['ng03.exileng.com']
+ALLOWED_HOSTS = ['s03.exileng.com']
 #-------------------------------------------------------------------------------
 ADMINS = [('Freddec', 'freddec.exileng@gmail.com')]
 MANAGERS = [('Freddec', 'freddec.exileng@gmail.com')]

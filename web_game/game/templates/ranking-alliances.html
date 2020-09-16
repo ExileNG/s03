@@ -18,7 +18,7 @@
 {% for p in ps %}&nbsp;{% if p.link %}<a href="?a=sent&start={{p.page_link}}">{% endif %}{% if p.selected %}<span class="selected">{% endif %}{{p.page_id}}{% if p.selected %}</span>{% endif %}{% if p.link %}</a>{% endif %}{% endfor %}.
 </td></tr>{% endif %}
 {% if noresult %}<tr><td colspan=4 align=center>Aucune alliance trouvée.</td></tr>{% endif %}
-{% for alliance in alliances%}
+{% for alliance in alliances %}
 <tr{% if alliance.playeralliance %} class=ranking_alliance{% endif %}{% if alliance.nap %} class=ranking_nap{% endif %}{% if alliance.war %} class=ranking_war{% endif %}>
 	<td>{{alliance.place}}. <a href="/game/alliance/?tag={{alliance.tag}}">[{{alliance.tag}}] {{alliance.name}}</a></td>
 	{% if alliance.hide %}<td align="right">{{alliance.score|intcomma}}<br/><span{% if alliance.plus %} class="plus"{% endif %}{% if alliance.minus %} class="minus"{% endif %}>{% if alliance.plus %}+{% endif %}{{alliance.score_delta|intcomma}}</span></td><td align=right>{{alliance.score_average|intcomma}}</td>{% endif %}

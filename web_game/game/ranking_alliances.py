@@ -86,7 +86,7 @@ class View(GlobalView):
                 " OFFSET "+str(offset*displayed)+" LIMIT "+str(displayed)
         oRss = oConnExecuteAll(query)
 
-        if oRs == None: content.Parse("noresult")
+        if oRss == None: content.Parse("noresult")
 
         content.AssignValue("page_displayed", offset+1)
         content.AssignValue("page_first", offset*displayed+1)

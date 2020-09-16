@@ -11071,7 +11071,7 @@ CREATE FUNCTION static.sp_daily_cleaning() RETURNS void
     LANGUAGE plpgsql
     AS $$BEGIN
 
-	UPDATE users SET credits=1000000 WHERE id < 100;
+	UPDATE users SET credits=1000000 WHERE id <= 5;
 
 	DELETE FROM alliances_reports WHERE datetime < now() - INTERVAL '2 weeks';
 

@@ -20,11 +20,10 @@ class ExileMixin(BaseMixin):
         self.StartTime = time.clock()
         self.scripturl = request.META.get("SCRIPT_NAME") + "?" + request.META.get("QUERY_STRING")
         
-        if not maintenance:
-            connectDB()
-        else:
-            return HttpResponseRedirect('/game/maintenance/')
+        if maintenance: return HttpResponseRedirect('/game/maintenance/')
         
+        connectDB()
+
         if self.SessionEnabled:
             # retrieve/assign lcid
             if self.lang == "": self.lang = request.COOKIES.get("lcid", "")

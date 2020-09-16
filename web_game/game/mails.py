@@ -161,6 +161,7 @@ class View(GlobalView):
         #
         offset = ToInt(self.request.GET.get("start"), 0)
         if offset > 50: offset=50
+        if offset < 0: offset=0
 
         search_cond = ""
         if self.request.session.get(sPrivilege) < 100: search_cond = "not deleted AND "
