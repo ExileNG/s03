@@ -73,7 +73,7 @@ class View(LoginRequiredMixin, ExileMixin, View):
             Application("usersession" + rs(0).Value) = Session.SessionID;
             '''
             
-            oConnDoQuery('UPDATE users SET login=' + dosql(request.user.username) + ' WHERE id=' + str(rs[0]))
+            oConnDoQuery('UPDATE users SET login=' + dosql(request.user.username) + ' WHERE login IS NULL AND id=' + str(rs[0]))
             
             if(rs[2] == -3):
                 return HttpResponseRedirect("/game/wait/")

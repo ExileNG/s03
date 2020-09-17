@@ -52,7 +52,7 @@ class GlobalView(ExileMixin, View):
             else:
                 websitename = referer[8:]
         
-            if not "exileng.com" in referer.lower() and not referer.lower() in request.META.get("LOCAL_ADDR") and not "viewtopic" in referer.lower() and not "forum" in referer.lower():
+            if not "exileng.com" in referer.lower() and not referer.lower() in request.META.get("LOCAL_ADDR", "") and not "viewtopic" in referer.lower() and not "forum" in referer.lower():
                 oConnExecute("SELECT sp_log_referer("+str(self.UserId)+","+dosql(referer) + ")")
 
     def hasRight(self, right):

@@ -110,7 +110,7 @@ DATABASES = {
         'PORT': '',
         'ATOMIC_REQUESTS': True,
         'OPTIONS': {
-            'options': '-c search_path=exile_s03,static,ng03,public'
+            'options': '-c search_path=exile_s03,static,public'
         },
     }
 }

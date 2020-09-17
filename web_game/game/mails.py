@@ -174,6 +174,7 @@ class View(GlobalView):
         if nb_pages*displayed < size: nb_pages = nb_pages + 1
         if offset >= nb_pages: offset = nb_pages-1
 
+        if offset < 0: offset=0
         content.AssignValue("offset", offset)
 
         if nb_pages > 50: nb_pages=50
