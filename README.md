@@ -16,4 +16,6 @@
 - create a server/confidential.py file with your confidential info
 - create a Django superuser
 - run your Django server
+
+
 Enjoy !
