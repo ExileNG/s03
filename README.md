@@ -1,9 +1,9 @@
-# environnement
+# environment
 - Python 3.7.7
 - Django 2.1.7
 - Postgresql 12.2
 
-# packages supplémentaires
+# extra packages
 - Impersonate
 - Precise BBCode
 
