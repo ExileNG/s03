@@ -14,12 +14,11 @@
 	</div>{% endfor %}
 	</td>
 </tr>
-{% endfor %}
-{% if noships %}
+{% empty %}
 <tr class="smallitem">
 	<td colspan="3" align="center">Aucun vaisseau en attente</td>
 </tr>
-{% endif %}
+{% endfor %}
 </table>
 </div>
 {% endblock %}
