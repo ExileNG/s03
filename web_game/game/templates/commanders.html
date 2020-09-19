@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load tz %}
 {% load humanize %}
 {% block content %}
 {% if commander_list %}
@@ -47,7 +48,7 @@ function confirmTrain(prestige) {
 	<div class=clear></div>
 	<table class=clear style="margin-left:22px">
 	<tr><td>Salaire:</td><td><img src="{{PATH_IMAGES}}/interface/credits.gif" class=res title="Crédits" width=16 height=16> {{commander.salary|intcomma}}</td></tr>
-	<tr><td>Incorporé:</td><td>{{commander.recruited}}</td></tr>
+	<tr><td>Incorporé:</td><td>{{commander.recruited|timezone:"Europe/Paris"|date:"d M Y H:i"}}</td></tr>
 	<tr><td>Affectation:</td><td nowrap>
 	{% if commander.not_assigned %}Aucune{% endif %}
 	{% if commander.planet_command %}<img src="{{PATH_IMAGES}}/interface/planet.gif" width=16 height=16 class=res title="Planète"><script>putplanet("{{commander.planetid}}","{{commander.commandment}}","{{commander.g}}","{{commander.s}}","{{commander.p}}",2);</script>{% endif %}
@@ -99,7 +100,7 @@ function confirmTrain(prestige) {
 	<div class=right>{% if commander.can_engage %}<a href="?a=engage&id={{commander.id}}" onclick="return confirmEngageCommander('{{commander.name}}')">Embaucher</a>{% endif %}{% if commander.cant_engage %}<span class="cant_engage">Embaucher</span>{% endif %}</div><div class=clear></div>
 	<table class=clear style="margin-left:22px">
 	<tr><td>Salaire:</td><td><img src="{{PATH_IMAGES}}/interface/credits.gif" class=res title="Crédits" width=16 height=16> {{commander.salary|intcomma}}</td></tr>
-	<tr><td>Repéré le:</td><td>{{commander.added}}</td></tr>
+	<tr><td>Repéré le:</td><td>{{commander.added|timezone:"Europe/Paris"|date:"d M Y H:i"}}</td></tr>
 	</table>
 	</td>
 	<td valign="top">

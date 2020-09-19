@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load tz %}
 {% load humanize %}
 {% load bbcode_tags %}
 {% block content %}
@@ -20,7 +21,7 @@
 				<td valign="top">{% if data_alliance %}<a href="/game/alliance/?tag={{alliancetag}}" class="{% if self %}self{% endif %}{% if ally %}ally{% endif %}{% if friend %}friend{% endif %}{% if enemy %}enemy{% endif %}">[{{alliancetag}}]</a>&nbsp;{% endif %}<span class="{% if self %}self{% endif %}{% if ally %}ally{% endif %}{% if friend %}friend{% endif %}{% if enemy %}enemy{% endif %}">{{name}}</span>, 
 				{% if data_alliance %}{{rank_label}}{% endif %}{% if noalliance %}indépendant{% endif %}
 				<br/>
-				Date d'arrivée:&nbsp;{{regdate}}<br/>
+				Date d'arrivée:&nbsp;{{regdate|timezone:"Europe/Paris"|date:"d M Y H:i"}}<br/>
 				<br/>
 				{% if sendmail %}<a href="/game/mails/?a=new&b={{name}}" title="Nouveau message à {{name}}">Envoyer un message</a>{% endif %}
 				</td>

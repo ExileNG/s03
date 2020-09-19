@@ -468,15 +468,15 @@ class GlobalView(ExileMixin, View):
     
                 tpl_layout.Parse("creditswarning")
 
+            if self.IsImpersonating():
+                tpl_layout.AssignValue("login", self.oPlayerInfo["login"])
+                tpl_layout.Parse("impersonating")
+                
             #
             # Fill admin info
             #
             if self.request.session.get(sPrivilege) > 100:
     
-                if self.IsImpersonating():
-                    tpl_layout.AssignValue("login", self.oPlayerInfo["login"])
-                    tpl_layout.Parse("impersonating")
-                    
                 # Assign the time taken to generate the page
                 tpl_layout.AssignValue("render_time",  (time.clock() - self.StartTime))
     

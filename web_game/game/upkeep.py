@@ -35,7 +35,7 @@ class View(GlobalView):
         content.AssignValue("commanders_quantity", oRs[18])
         content.AssignValue("commanders_salary", oRs[19])
         content.AssignValue("commanders_cost", oRs[20])
-        content.AssignValue("commanders_estimated_cost", oRs[21])
+        content.AssignValue("commanders_estimated_cost", int(oRs[21]))
 
         content.AssignValue("scientists_quantity", oRs[0])
         content.AssignValue("soldiers_quantity", oRs[1])
@@ -44,7 +44,7 @@ class View(GlobalView):
         content.AssignValue("ships_in_position_signature", oRs[4])
         content.AssignValue("ships_parked_signature", oRs[5])
 
-        content.AssignValue("planets_cost", oRs[6])
+        content.AssignValue("planets_cost", int(oRs[6]))
         content.AssignValue("scientists_cost", oRs[7])
         content.AssignValue("soldiers_cost", oRs[8])
         content.AssignValue("ships_cost", oRs[9])
@@ -58,7 +58,7 @@ class View(GlobalView):
         content.AssignValue("ships_in_position_estimated_cost", oRs[16])
         content.AssignValue("ships_parked_estimated_cost", oRs[17])
 
-        content.AssignValue("total_estimation", oRs[12] + oRs[13] + oRs[14] + oRs[15] + oRs[16] + oRs[17] + oRs[21])
+        content.AssignValue("total_estimation", int(oRs[12] + oRs[13] + oRs[14] + oRs[15] + oRs[16] + oRs[17] + oRs[21]))
 
         self.FillHeaderCredits(content)
         return self.Display(content)

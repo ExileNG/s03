@@ -1,10 +1,11 @@
 {% extends 'layout.html' %}
+{% load tz %}
 {% load humanize %}
 {% block content %}
 <div id="battle">
 
 <table width="100%" class="default">
-<tr class="title"><td colspan="5">{{planet}} [{{g}}.{{s}}.{{p}}] - {{time}} en {{rounds}}&nbsp;round(s)</td></tr>
+<tr class="title"><td colspan="5">{{planet}} [{{g}}.{{s}}.{{p}}] - {{time|timezone:"Europe/Paris"|date:"d M Y H:i"}} en {{rounds}}&nbsp;round(s)</td></tr>
 
 <tr class="header">
 <td>Flotte</td><td>Vaisseaux</td><td>Perdus</td><td>Détruits</td><td>Après combat</td>

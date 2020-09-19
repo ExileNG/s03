@@ -28,7 +28,7 @@
 <tr class="item{% if message.new %}highlight{% endif %}">
 	<td width="1%" valign="top"><img src="{{PATH_IMAGES}}/reports/{{message.type}}.jpg" width="64" height="64" class="report"></td>
 	<td width="90%" valign="top">
-	<div class="subject">{{message.date|timezone:"Europe/Paris"}}{% if message.nation %} | <a href="/game/nation/?name={{message.nation}}">{{message.nation}}</a>{% endif %} |
+	<div class="subject">{{message.date|timezone:"Europe/Paris"|date:"d M Y H:i"}}{% if message.nation %} | <a href="/game/nation/?name={{message.nation}}">{{message.nation}}</a>{% endif %} |
 	{% if message.type == 100 %}Invitation d'alliance.
 	{% elif message.type == 120 %}Invitation d'un nouveau membre.
 	{% elif message.type == 122 %}Invitation déclinée.
