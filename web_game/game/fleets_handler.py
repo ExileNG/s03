@@ -220,27 +220,31 @@ class View(ExileMixin, View):
                     s["ship_quantity"] = ship[2]
                     
             item['resources'] = []
-            res = {}
             
-            res["res_id"] = 1
-            res["res_quantity"] = oRs[27]
-            item['resources'].append(res)
+            res1 = {}
+            res1["res_id"] = 1
+            res1["res_quantity"] = oRs[27]
+            item['resources'].append(res1)
 
-            res["res_id"] = 2
-            res["res_quantity"] = oRs[28]
-            item['resources'].append(res)
+            res2 = {}
+            res2["res_id"] = 2
+            res2["res_quantity"] = oRs[28]
+            item['resources'].append(res2)
 
-            res["res_id"] = 3
-            res["res_quantity"] = oRs[29]
-            item['resources'].append(res)
+            res3 = {}
+            res3["res_id"] = 3
+            res3["res_quantity"] = oRs[29]
+            item['resources'].append(res3)
 
-            res["res_id"] = 4
-            res["res_quantity"] = oRs[30]
-            item['resources'].append(res)
+            res4 = {}
+            res4["res_id"] = 4
+            res4["res_quantity"] = oRs[30]
+            item['resources'].append(res4)
 
-            res["res_id"] = 5
-            res["res_quantity"] = oRs[31]
-            item['resources'].append(res)
+            res5 = {}
+            res5["res_id"] = 5
+            res5["res_quantity"] = oRs[31]
+            item['resources'].append(res5)
 
         content.Parse("list")
 

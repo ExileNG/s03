@@ -102,12 +102,10 @@ function dCargo(id) {
 		var fleet = currentList[x];
 		if(fleet.id == id){
 			var s = '<table width="100%">';
-
 			for(var i=1;i<fleet.resources.length;i++){
 				var res = fleet.resources[i];
 				s+='<tr><td width="1%" nowrap><img src="{{PATH_IMAGES}}/interface/' + resources[res.id].image + '.gif" width="16" height="16" class="res">' + resources[res.id].label + '</td><td width="1%" align="right" nowrap class="grey">' + res.quantity.n() + '</td></tr>';
 			}
-
 			return s + '</table>';
 		}
 	}
