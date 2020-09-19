@@ -58,6 +58,7 @@
 	{% elif message.type == 602 %}Soulèvement.
 	{% elif message.type == 720 %}Vol de ressources.
 	{% elif message.type == 721 %}Des émeutes éclatent.
+	{% elif message.type == 723 %}Une expérience a mal tourné.
 	{% elif message.type == 752 %}Découverte de riches filons de minerai !
 	{% elif message.type == 753 %}Épuisement des filons de minerai.
 	{% elif message.type == 754 %}Découverte de riches gisements d'hydrocarbure !
@@ -206,6 +207,8 @@
 		document.write("Il y a eu beaucoup de blessés mais heureusement aucun mort n'est à déplorer.");
 	}
 	</script><br/>Nous perdons 17 points de contrôle sur cette planète et 2 points sur toutes les autres planètes.
+	{% elif message.type == 723 %}Un accident est survenu dans un laboratoire de recherche sur <a href="/game/training/?planet={{message.planetid}}">{{message.planetname}} ({{message.g}}.{{message.s}}.{{message.p}})</a>.<br/>
+	Plusieurs <a href="/game/training/?planet={{message.planetid}}"> scientifiques</a> ont été blessés dont {{message.scientists|intcomma}} mortellement.
 	{% elif message.type == 752 %}De riches filons de minerai ont été découverts sur <a href="/game/planet/?planet={{message.planetid}}">{{message.planetname}} ({{message.g}}.{{message.s}}.{{message.p}})</a>, la production de minerai est augmentée.
 	{% elif message.type == 753 %}Nous avons épuisé les filons de minerai que nous avions localisés sur <a href="/game/planet/?planet={{message.planetid}}">{{message.planetname}} ({{message.g}}.{{message.s}}.{{message.p}})</a>, la production de minerai est redescendue au niveau normal.
 	{% elif message.type == 754 %}De riches gisements d'hydrocarbure ont été découverts sur <a href="/game/planet/?planet={{message.planetid}}">{{message.planetname}} ({{message.g}}.{{message.s}}.{{message.p}})</a>, la production en hydrocarbure est augmentée.

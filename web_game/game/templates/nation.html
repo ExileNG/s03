@@ -29,7 +29,7 @@
 	</td>
 </tr>
 
-{% if description %}<tr class="item"><td colspan="2"><p>{{description|bbcode}}</p></td></tr>{% endif %}
+{% if description %}<tr class="item"><td colspan="2"><p>{{description|safe|bbcode}}</p></td></tr>{% endif %}
 
 {% if alliances %}
 <tr class="category"><td>Alliance</td><td>Rallié</td></tr>

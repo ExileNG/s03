@@ -17,7 +17,6 @@
 {% if nav %}<tr class="nav"><td colspan=2 align=left>Page {{page_display}}, Messages {{min}}-{{max}}. Aller à
 {% for p in ps %}&nbsp;{% if p.link %}<a href="?a=sent&start={{p.page_link}}">{% endif %}{% if p.selected %}<span class="selected">{% endif %}{{p.page_id}}{% if p.selected %}</span>{% endif %}{% if p.link %}</a>{% endif %}{% endfor %}.
 </td></tr>{% endif %}
-{% if noresult %}<tr><td colspan=4 align=center>Aucune alliance trouvée.</td></tr>{% endif %}
 {% for alliance in alliances %}
 <tr{% if alliance.playeralliance %} class=ranking_alliance{% endif %}{% if alliance.nap %} class=ranking_nap{% endif %}{% if alliance.war %} class=ranking_war{% endif %}>
 	<td>{{alliance.place}}. <a href="/game/alliance/?tag={{alliance.tag}}">[{{alliance.tag}}] {{alliance.name}}</a></td>
@@ -26,6 +25,7 @@
 	<td align=right>{{alliance.stat_colonies}}</td>
 	<td>{{alliance.created}}</td>
 </tr>
+{% empty %}<tr><td colspan=4 align=center>Aucune alliance trouvée.</td></tr>
 {% endfor %}
 {% if nav %}<tr class="nav"><td colspan=2 align=left>Page {{page_display}}, Messages {{min}}-{{max}}. Aller à
 {% for p in ps %}&nbsp;{% if p.link %}<a href="?a=sent&start={{p.page_link}}">{% endif %}{% if p.selected %}<span class="selected">{% endif %}{{p.page_id}}{% if p.selected %}</span>{% endif %}{% if p.link %}</a>{% endif %}{% endfor %}.

@@ -22,7 +22,7 @@ class View(ExileMixin, View):
 
         result = 0
 
-        self.UserId = int(request.session.get("user"))
+        self.UserId = int(request.session.get("user", ""))
         galaxy = int(request.POST.get("galaxy", 0))
         if galaxy == None: galaxy = 0
 

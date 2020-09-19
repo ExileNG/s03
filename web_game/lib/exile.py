@@ -2,13 +2,14 @@
 
 import time
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 
 from web_game.lib.config import *
 from web_game.lib.sql import *
 from web_game.lib.functions import *
 
-class ExileMixin(BaseMixin):
+class ExileMixin(LoginRequiredMixin, BaseMixin):
 
     browserid = ""
 

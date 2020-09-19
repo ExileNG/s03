@@ -8,7 +8,7 @@
 		<td>Notes personnelles (<span id="count">0</span> / {{maxlength}} caractères)</td>
 	</tr>
 	<tr class="item">
-		<td><textarea id=notes name=notes cols=75 rows=15 onKeyUp="update(this)" onFocus="update(this)">{{data_notes}}</textarea></td>
+		<td><textarea id=notes name=notes cols=75 rows=15 onKeyUp="update(this)" onFocus="update(this)">{% if data_notes %}{{data_notes}}{% endif %}</textarea></td>
 	</tr>
 
 	<tr class="item">

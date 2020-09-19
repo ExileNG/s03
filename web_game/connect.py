@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.views import View
 
 from web_game.lib.exile import *
 
-class View(LoginRequiredMixin, ExileMixin, View):
+class View(ExileMixin, View):
 
     def dispatch(self, request, *args, **kwargs):
         
