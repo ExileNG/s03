@@ -241,25 +241,21 @@ class GlobalView(ExileMixin, View):
 
         # cache the list of planets as they are not supposed to change unless a colonization occurs
         # in case of colonization, let the colonize script reset the session value
-        if self.request.session.get(sPlanetList):
-            planetListArray = self.request.session.get(sPlanetList)
-            planetListCount = self.request.session.get(sPlanetListCount)
+        # retrieve planet list
+        query = "SELECT id, name, galaxy, sector, planet" + \
+                " FROM nav_planet" + \
+                " WHERE planet_floor > 0 AND planet_space > 0 AND ownerid=" + str(self.UserId) + \
+                " ORDER BY id"
+        oRs = oConnExecuteAll(query)
+
+        if oRs == None:
+            planetListCount = -1
         else:
-            # retrieve planet list
-            query = "SELECT id, name, galaxy, sector, planet" + \
-                    " FROM nav_planet" + \
-                    " WHERE planet_floor > 0 AND planet_space > 0 AND ownerid=" + str(self.UserId) + \
-                    " ORDER BY id"
-            oRs = oConnExecuteAll(query)
-    
-            if oRs == None:
-                planetListCount = -1
-            else:
-                planetListArray = oRs
-                planetListCount = len(oRs)
-    
-            self.request.session[sPlanetList] = planetListArray
-            self.request.session[sPlanetListCount] = planetListCount
+            planetListArray = oRs
+            planetListCount = len(oRs)
+
+        self.request.session[sPlanetList] = planetListArray
+        self.request.session[sPlanetListCount] = planetListCount
 
         planets = []
         for item in planetListArray:
