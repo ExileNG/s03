@@ -22,11 +22,11 @@ class View(ExileMixin, View):
 
         result = 0
 
-        self.UserId = int(request.session.get("user", ""))
+        self.UserId = int(request.session.get("user", 0))
         galaxy = int(request.POST.get("galaxy", 0))
         if galaxy == None: galaxy = 0
 
-        if not self.UserId:
+        if not self.UserId or self.UserId == 0:
             return HttpResponseRedirect("/")
 
         # check if it is the first login of the player

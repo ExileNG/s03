@@ -3726,7 +3726,7 @@ BEGIN
 
 		requests=requests+1*/
 
-	WHERE id=$1 AND (lastactivity < now()-INTERVAL '5 minutes');-- OR lastaddress <> addr OR lastbrowserid <> $3);
+	WHERE id=$1 AND (lastactivity IS NULL OR lastactivity < now()-INTERVAL '5 minutes');-- OR lastaddress <> addr OR lastbrowserid <> $3);
 
 /*
 
