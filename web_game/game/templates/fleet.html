@@ -2,7 +2,9 @@
 
 {% load humanize %}
 {% block content %}
+{% if header_credits %}
 {% include 'header-credits.html' %}
+{% endif %}
 <script>
 function setCargoLoad(value) { $('load').innerHTML = formatnumber(value); }
 

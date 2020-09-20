@@ -554,9 +554,10 @@ class View(GlobalView):
         # display header
         if oRs[34] == 0 and oRs[17] == rSelf:
             self.CurrentPlanet = oRs[10]
-            self.FillHeader(content)
+            self.showHeader = True
         else:
             self.FillHeaderCredits(content)
+            content.Parse("header_credits")
         
         #
         # display the list of ships in the fleet
