@@ -4777,7 +4777,7 @@ BEGIN
 
 		-- compute signature of enemy fleets orbiting the planet
 
-		SELECT INTO enemysig int4(COALESCE(0, sum(signature))) FROM fleets WHERE ownerid > 100 AND planetid=r_planet.id;
+		SELECT INTO enemysig int4(COALESCE(0, sum(signature))) FROM fleets WHERE ownerid > 4 AND planetid=r_planet.id;
 
 		IF NOT FOUND THEN
 
@@ -4871,7 +4871,7 @@ BEGIN
 
 		FROM fleets
 
-		WHERE (dest_planetid = r_planet.id OR planetid = r_planet.id) AND ownerid > 100;
+		WHERE (dest_planetid = r_planet.id OR planetid = r_planet.id) AND ownerid > 4;
 
 		IF FOUND AND r_planet.soldiers < cr THEN
 
@@ -5105,7 +5105,7 @@ BEGIN
 
 	INSERT INTO ai_watched_planets(planetid)
 
-	SELECT id FROM vw_planets WHERE ownerid > 100 AND id NOT IN (SELECT planetid FROM ai_watched_planets) AND (workers <= 1000 OR mood <= 5);
+	SELECT id FROM vw_planets WHERE ownerid > 4 AND id NOT IN (SELECT planetid FROM ai_watched_planets) AND (workers <= 1000 OR mood <= 5);
 
 END;$$;
 
@@ -12079,7 +12079,7 @@ BEGIN
 
 		FROM nav_planet
 
-		WHERE ownerid > 100 AND buildings_dilapidation > 1000
+		WHERE ownerid > 4 AND buildings_dilapidation > 1000
 
 		ORDER BY random() LIMIT 20
 
@@ -12175,7 +12175,7 @@ BEGIN
 
 		FROM vw_planets
 
-		WHERE ownerid > 100 AND not production_frozen AND scientists > 20 AND random() < 1.0*(1.0+workers_for_maintenance-workers)/(1.0+workers_for_maintenance)*p+0.00001 AND last_catastrophe < now()-INTERVAL '6 hours' FOR UPDATE
+		WHERE ownerid > 4 AND not production_frozen AND scientists > 20 AND random() < 1.0*(1.0+workers_for_maintenance-workers)/(1.0+workers_for_maintenance)*p+0.00001 AND last_catastrophe < now()-INTERVAL '6 hours' FOR UPDATE
 
 	LOOP
 
@@ -12228,7 +12228,7 @@ BEGIN
 
 		FROM nav_planet AS p
 
-			INNER JOIN users AS u ON (u.id = p.ownerid AND p.ownerid > 100)
+			INNER JOIN users AS u ON (u.id = p.ownerid AND p.ownerid > 4)
 
 		WHERE planet_floor > 0 AND (random() < 0.00005) AND NOT production_frozen AND (u.privilege=0) AND (u.planets > 5) AND (p.last_catastrophe < now()-INTERVAL '48 hours') FOR UPDATE
 
@@ -12572,7 +12572,7 @@ BEGIN
 
 			JOIN users ON (users.id = p.ownerid AND users.privilege=0)
 
-		WHERE p.ownerid > 100 AND planets <= 20 AND not production_frozen
+		WHERE p.ownerid > 4 AND planets <= 20 AND not production_frozen
 
 		OFFSET 0) as t
 
@@ -12741,7 +12741,7 @@ BEGIN
 
 		FROM vw_planets
 
-		WHERE planet_floor > 0 AND ownerid > 100 AND not production_frozen AND last_catastrophe < now()-INTERVAL '4 hours' AND mood < 60 AND random() < (1.0 + workers + scientists + (60-mood)*500 - soldiers*250)/(1.0+workers + scientists)*p
+		WHERE planet_floor > 0 AND ownerid > 4 AND not production_frozen AND last_catastrophe < now()-INTERVAL '4 hours' AND mood < 60 AND random() < (1.0 + workers + scientists + (60-mood)*500 - soldiers*250)/(1.0+workers + scientists)*p
 
 	LOOP
 
@@ -12884,7 +12884,7 @@ BEGIN
 
 			INNER JOIN users ON (users.id=v.ownerid AND users.privilege=0)
 
-		WHERE planet_floor > 0 AND v.ownerid > 100 AND planets > 2 AND random() < planets/100.0 AND not production_frozen AND v.last_catastrophe < now()-INTERVAL '5 hours' AND v.mood < 90 AND random() < (1.0+v.workers + v.scientists + (90-v.mood)*100.0 - v.soldiers*250)/(1.0+v.workers + v.scientists)*p
+		WHERE planet_floor > 0 AND v.ownerid > 4 AND planets > 2 AND random() < planets/100.0 AND not production_frozen AND v.last_catastrophe < now()-INTERVAL '5 hours' AND v.mood < 90 AND random() < (1.0+v.workers + v.scientists + (90-v.mood)*100.0 - v.soldiers*250)/(1.0+v.workers + v.scientists)*p
 
 		ORDER BY Random()
 
@@ -12993,7 +12993,7 @@ BEGIN
 
 		IF NOT FOUND THEN
 
-			SELECT INTO military_sig sum(military_signature) FROM fleets WHERE planetid=r_planet.id AND ownerid > 100;
+			SELECT INTO military_sig sum(military_signature) FROM fleets WHERE planetid=r_planet.id AND ownerid > 4;
 
 			CONTINUE WHEN random() > sectorvalue*1000 / (military_sig+1);
 
@@ -13165,7 +13165,7 @@ BEGIN
 
 			INNER JOIN nav_planet ON nav_planet.id=fleets.planetid
 
-		WHERE fleets.ownerid > 100 AND military_signature < 2000 AND idle_since < now()-interval '2 weeks' AND NOT planetid IN (34,35,36,37,44,45,46,47,54,55,56,57,64,65,66,67) AND NOT production_frozen
+		WHERE fleets.ownerid > 4 AND military_signature < 2000 AND idle_since < now()-interval '2 weeks' AND NOT planetid IN (34,35,36,37,44,45,46,47,54,55,56,57,64,65,66,67) AND NOT production_frozen
 
 		ORDER BY random()
 
@@ -13187,7 +13187,7 @@ BEGIN
 
 			FROM nav_planet
 
-			WHERE id <> r_fleet.planetid AND (ownerid IS NULL OR planet_floor=0) AND galaxy = r_fleet.galaxy AND sector IN (r_fleet.sector, r_fleet.sector+10, r_fleet.sector-10) AND EXISTS(SELECT 1 FROM fleets WHERE ownerid > 100 AND planetid=nav_planet.id AND military_signature < 2000 AND idle_since <= now()-interval '2 weeks') AND NOT production_frozen
+			WHERE id <> r_fleet.planetid AND (ownerid IS NULL OR planet_floor=0) AND galaxy = r_fleet.galaxy AND sector IN (r_fleet.sector, r_fleet.sector+10, r_fleet.sector-10) AND EXISTS(SELECT 1 FROM fleets WHERE ownerid > 4 AND planetid=nav_planet.id AND military_signature < 2000 AND idle_since <= now()-interval '2 weeks') AND NOT production_frozen
 
 			ORDER BY random()
 
@@ -13367,7 +13367,7 @@ BEGIN
 
 			INNER JOIN users ON (users.id=v.ownerid AND users.privilege=0)
 
-		WHERE v.ownerid > 100 AND sandworm_activity > 0 AND random() < 0.5*sandworm_activity/10000.0 AND not production_frozen
+		WHERE v.ownerid > 4 AND sandworm_activity > 0 AND random() < 0.5*sandworm_activity/10000.0 AND not production_frozen
 
 		ORDER BY random()
 
@@ -13425,7 +13425,7 @@ BEGIN
 
 			INNER JOIN users ON (users.id=v.ownerid AND users.privilege=0)
 
-		WHERE v.ownerid > 100 AND seismic_activity > 0 AND random() < 0.5*seismic_activity/10000.0 AND not production_frozen
+		WHERE v.ownerid > 4 AND seismic_activity > 0 AND random() < 0.5*seismic_activity/10000.0 AND not production_frozen
 
 		ORDER BY random()
 
@@ -15439,7 +15439,7 @@ BEGIN
 
 		VALUES(r_planet.ownerid, 2, 10, $1, r_fleet.planetid, invasion_id, _data);
 
-		IF r_planet.ownerid > 100 THEN
+		IF r_planet.ownerid > 4 THEN
 
 			UPDATE nav_galaxies SET
 
@@ -15884,7 +15884,7 @@ BEGIN
 
 		VALUES(r_planet.ownerid, 2, 10, $1, r_fleet.planetid, invasion_id, _data);
 
-		IF r_planet.ownerid > 100 THEN
+		IF r_planet.ownerid > 4 THEN
 
 			UPDATE nav_galaxies SET
 
@@ -17110,7 +17110,7 @@ BEGIN
 
 	WHERE nav_planet.id = _planet_id;
 
-	IF NOT FOUND OR (_user_id > 100 AND NOT dest_planet.visible AND dest_planet.ownerid <> _user_id) OR fleet.security_level < dest_planet.min_security_level THEN
+	IF NOT FOUND OR (_user_id > 4 AND NOT dest_planet.visible AND dest_planet.ownerid <> _user_id) OR fleet.security_level < dest_planet.min_security_level THEN
 
 		RETURN -3;
 
@@ -19631,7 +19631,7 @@ CREATE FUNCTION static.sp_process_market_price() RETURNS void
 
 							INNER JOIN users ON (nav_planet.ownerid=users.id)
 
-						WHERE nav_planet.galaxy=nav_galaxies.id AND nav_planet.ownerid > 100 AND nav_planet.score > 0 AND floor > 0 AND users.lastlogin - users.regdate > INTERVAL '2 days' AND users.lastlogin > now() - INTERVAL '2 weeks'), 0),
+						WHERE nav_planet.galaxy=nav_galaxies.id AND nav_planet.ownerid > 4 AND nav_planet.score > 0 AND floor > 0 AND users.lastlogin - users.regdate > INTERVAL '2 days' AND users.lastlogin > now() - INTERVAL '2 weeks'), 0),
 
 		traded_hydrocarbon = COALESCE(traded_hydrocarbon - 200.0 * power(200.0 / LEAST(200, GREATEST(50, 200.0 - power(GREATEST(1, traded_hydrocarbon), 0.95) / 10000000.0)), 2) * 
 
@@ -19641,7 +19641,7 @@ CREATE FUNCTION static.sp_process_market_price() RETURNS void
 
 							INNER JOIN users ON (nav_planet.ownerid=users.id)
 
-						WHERE nav_planet.galaxy=nav_galaxies.id AND nav_planet.ownerid > 100 AND nav_planet.score > 0 AND floor > 0 AND users.lastlogin - users.regdate > INTERVAL '2 days' AND users.lastlogin > now() - INTERVAL '2 weeks'), 0);
+						WHERE nav_planet.galaxy=nav_galaxies.id AND nav_planet.ownerid > 4 AND nav_planet.score > 0 AND floor > 0 AND users.lastlogin - users.regdate > INTERVAL '2 days' AND users.lastlogin > now() - INTERVAL '2 weeks'), 0);
 
 END;$$;
 
@@ -26275,7 +26275,7 @@ CREATE FUNCTION static.sp_users_expenses_before_insert() RETURNS trigger
 
 BEGIN
 
-	IF NEW.userid < 100 THEN
+	IF NEW.userid < 4 THEN
 
 		RETURN NULL;
 
