@@ -12,7 +12,7 @@
 <tr class="bigtitle"><td>[{{tag}}] {{name}}</td></tr>
 {% if logo %}<tr class="item"><td align=center><img src="{{logo_url}}" class="logo"></td></tr>{% endif %}
 {% if description %}
-<tr class="item"><td><p>{{description|bbcode}}</p></td></tr>
+<tr class="item"><td><p>{{description|safe|bbcode}}</p></td></tr>
 {% endif %}
 
 {% for rank in ranks %}
