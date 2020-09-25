@@ -50,7 +50,7 @@ function check(){
 		</div>
 	</td>
 </tr>
-<tr class="item"><td colspan="5">{{description|bbcode}}</td></tr>
+<tr class="item"><td colspan="5">{{description|safe|bbcode}}</td></tr>
 
 <tr><td colspan="5">&nbsp;</td></tr>
 <tr class="smallitem">
@@ -63,7 +63,7 @@ function check(){
 {% endif %}
 
 {% if motd %}
-<tr class="item"><td colspan="5">{{announce|bbcode}}</td></tr>
+<tr class="item"><td colspan="5">{{announce|safe|bbcode}}</td></tr>
 
 <tr class="title"><td colspan="5">Annonce</td></tr>
 <tr class="item"><td width='1%'>DEFCON</td><td colspan="4"><select name="defcon">

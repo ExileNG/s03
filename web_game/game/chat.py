@@ -58,7 +58,7 @@ class View(GlobalView):
         return HttpResponse(" ")
 
     def refreshContent(self, chatid):
-        if chatid != 0 and self.request.session.get("chat_joined_" + str(chatid)) != "1": return
+        if chatid != 0 and self.request.session.get("chat_joined_" + str(chatid)) != "1": return HttpResponse(" ")
 
         userChatId = chatid
 
@@ -79,7 +79,7 @@ class View(GlobalView):
 
         # if there's no line to send and no list of users to send, exit
         if oRss == None and not refresh_userlist:
-            return " " # return an empty string : fix safari "undefined XMLHttpRequest.status" bug
+            return HttpResponse(" ") # return an empty string : fix safari "undefined XMLHttpRequest.status" bug
 
         # load the template
 
