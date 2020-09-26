@@ -88,7 +88,7 @@ tiptext = $("hinttext");
 
 <td nowrap align=left>
 	<table class=clear width="100%">
-	<tr><td><a href="help.asp?cat=ships#{{ship.id}}" onmouseover="ddrivetip(descShip({{ship.id}}))" onmouseout="hideddrivetip()"><b>{{ship.name}}</b></a></td><td align=right>x{{ship.quantity}}</td></tr>
+	<tr><td><a href="/game/help/?cat=ships#{{ship.id}}" onmouseover="ddrivetip(descShip({{ship.id}}))" onmouseout="hideddrivetip()"><b>{{ship.name}}</b></a></td><td align=right>x{{ship.quantity}}</td></tr>
 	</table>
 </td>
 <td nowrap><img src="{{PATH_IMAGES}}/interface/ore.gif" class="icon" title="Minerai" width=16 height=16> {{ship.ore|intcomma}}</td>
@@ -123,7 +123,7 @@ tiptext = $("hinttext");
 	<tr align="right">
 		<td align="left" nowrap colspan="1">
 			<table class="clear" width="100%">
-			<tr><td>{% if ship.recycle %}Recyclage de {% endif %}<a href="help.asp?cat=ships#{{ship.id}}"><b>{{ship.name}}</b></a></td><td align="right">x{{ship.quantity}}</td></tr>
+			<tr><td>{% if ship.recycle %}Recyclage de {% endif %}<a href="/game/help/?cat=ships#{{ship.id}}"><b>{{ship.name}}</b></a></td><td align="right">x{{ship.quantity}}</td></tr>
 			{% if ship.required_ship %}<tr><td colspan=2 nowrap><p class="shiprequirement">Requiert {{ship.required_ship_name}}</p></td></tr>{% endif %}
 			{% if ship.required_victory_marks %}<tr><td colspan="2" nowrap><p class="shiprequirement">Requiert {{ship.required_victory_marks}} points de combat</p></td></tr>{% endif %}
 			</table>
@@ -131,7 +131,7 @@ tiptext = $("hinttext");
 		<td nowrap><img src="{{PATH_IMAGES}}/interface/ore.gif" class=icon title="Minerai" width=16 height=16>{{ship.ore|intcomma}}</td>
 		<td nowrap><img src="{{PATH_IMAGES}}/interface/hydrocarbon.gif" class=icon title="Hydrocarbure" width=16 height=16>{{ship.hydrocarbon|intcomma}}</td>
 		<td align="center"><script>putcountdown1({{ship.remainingtime}},"&nbsp;");</script></td>
-		<td align="center"><script>putcountdown2({{ship.remainingtime}}, "{% if ship.recycle %}&nbsp;{% endif %}{% if ship.cancel %}<a href='?f={{filter}}&planet={{planetid}}&a=cancel&q={{ship.queueid}}'>annuler</a>{% endif %}", "<a href='shipyard.asp?planet={{planetid}}&f={{filter}}'>terminé</a>");</script></td>
+		<td align="center"><script>putcountdown2({{ship.remainingtime}}, "{% if ship.recycle %}&nbsp;{% endif %}{% if ship.cancel %}<a href='?f={{filter}}&planet={{planetid}}&a=cancel&q={{ship.queueid}}'>annuler</a>{% endif %}", "<a href='/game/shipyard/?planet={{planetid}}&f={{filter}}'>terminé</a>");</script></td>
 	</tr>
 	{% endfor %}
 {% endif %}
@@ -144,7 +144,7 @@ tiptext = $("hinttext");
 	<tr align="right">
 		<td align="left" colspan="1">
 			<table class="clear" width="100%">
-			<tr><td>{% if ship.recycle %}Recyclage de {% endif %}<a href="help.asp?cat=ships#{{ship.id}}"><b>{{ship.name}}</b></a></td><td align="right">x{{ship.quantity}}</td></tr>
+			<tr><td>{% if ship.recycle %}Recyclage de {% endif %}<a href="/game/help/?cat=ships#{{ship.id}}"><b>{{ship.name}}</b></a></td><td align="right">x{{ship.quantity}}</td></tr>
 			{% if ship.required_ship %}<tr><td colspan=2 nowrap><p class="shiprequirement">Requiert {{ship.required_ship_name}}</p></td></tr>{% endif %}
 			{% if ship.required_victory_marks %}<tr><td colspan="2" nowrap><p class="shiprequirement">Requiert {{ship.required_victory_marks}} points de combat</p></td></tr>{% endif %}
 			</table>
