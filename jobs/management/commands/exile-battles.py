@@ -47,14 +47,14 @@ class Command(BaseCommand):
                         if oFleet[11] == None:
                             battle.AddShips(oFleet[0], oFleet[1], oFleet[2], oFleet[3], oFleet[4], oFleet[5], oFleet[6], oFleet[8], oFleet[9], \
                                             {'EM': oFleet[17], 'Explosive': oFleet[18], 'Kinetic': oFleet[19], 'Thermal': oFleet[20]}, \
-                                            {'Hull': 1.0, 'Shield': oFleet[12], 'Handling': oFleet[13], 'Tracking_speed': oFleet[14], 'Damage': oFleet[15]}, \
+                                            {'Hull': 100.0, 'Shield': oFleet[12], 'Handling': oFleet[13], 'Tracking_speed': oFleet[14], 'Damage': oFleet[15]}, \
                                             {'EM': oFleet[21], 'Explosive': oFleet[22], 'Kinetic': oFleet[23], 'Thermal': oFleet[24]}, \
                                             oFleet[10], True or oFleet[16], oFleet[25])
                         else:
                             # if the fleet is fleeing, divide the handling of the fleet by 1, its weapon_tracking_speed by 2 and reduce number of rounds that can occur
                             battle.AddShips(oFleet[0], oFleet[1], oFleet[2], oFleet[3], oFleet[4], oFleet[5], oFleet[6], oFleet[8], oFleet[9], \
                                             {'EM': oFleet[17], 'Explosive': oFleet[18], 'Kinetic': oFleet[19], 'Thermal': oFleet[20]}, \
-                                            {'Hull': 1.0, 'Shield': oFleet[12], 'Handling': oFleet[13] / 1, 'Tracking_speed': oFleet[14] / 2, 'Damage': oFleet[15]}, \
+                                            {'Hull': 100.0, 'Shield': oFleet[12], 'Handling': oFleet[13] / 1, 'Tracking_speed': oFleet[14] / 2, 'Damage': oFleet[15]}, \
                                             {'EM': oFleet[21], 'Explosive': oFleet[22], 'Kinetic': oFleet[23], 'Thermal': oFleet[24]}, \
                                             oFleet[10], True or oFleet[16], oFleet[25])
 

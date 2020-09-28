@@ -35,7 +35,7 @@ class TBattle:
             player.Init()
 
         # sort the group list to know who shoot first
-        sorted(self.FGroupList, key=cmp_to_key(SortGroupsByFirstShooter))
+        self.FGroupList = sorted(self.FGroupList, key=cmp_to_key(SortGroupsByFirstShooter))
         
     def NextRound(self, MaxRounds):
         Result = self.CanFight()
@@ -65,7 +65,7 @@ class TBattle:
             player.Over()
 
         # Sort groups by owner
-        sorted(self.FGroupList, key=cmp_to_key(SortGroupsByOwnerId))
+        self.FGroupList = sorted(self.FGroupList, key=cmp_to_key(SortGroupsByOwnerId))
 
         for group in self.FGroupList:
             for kill in group.FKillList:
@@ -462,7 +462,7 @@ class TShipsGroup:
         if len(TargetList) > 0:
             # Sort the list by priority
             shuffle(TargetList)
-            sorted(TargetList, key=cmp_to_key(self.PrioritySort))
+            TargetList = sorted(TargetList, key=cmp_to_key(self.PrioritySort))
 
             Result = TargetList[0]
         else:

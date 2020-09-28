@@ -177,7 +177,7 @@ class View(GlobalView):
 
                 content.Parse("allied")
 
-        if oRs[4] == None:
+        if oRs[4] != None:
             content.AssignValue("alliancename", oRs[6])
             content.AssignValue("alliancetag", oRs[5])
             content.AssignValue("rank_label", oRs[9])

@@ -90,8 +90,7 @@ class View(GlobalView):
                 elif oRs[17] == rFriend:
                     fleet["friend"] = True
                 elif oRs[17] == rSelf:
-                    if oRs[26] == 0:
-                        fleet["owner"] = True
+                    fleet["owner"] = True
 
                 if manage:
                     fleet["manage"] = True

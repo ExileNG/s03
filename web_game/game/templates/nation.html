@@ -18,8 +18,8 @@
 					{% if avatar %}<img src="{{avatar_url}}" width=64 height=64 class="avatar">{% endif %}
 					{% if noavatar %}<img src="{{PATH_IMAGES}}/interface/noavatar.gif" width=64 height=64 class="avatar">{% endif %}
 				</td>
-				<td valign="top">{% if data_alliance %}<a href="/game/alliance/?tag={{alliancetag}}" class="{% if self %}self{% endif %}{% if ally %}ally{% endif %}{% if friend %}friend{% endif %}{% if enemy %}enemy{% endif %}">[{{alliancetag}}]</a>&nbsp;{% endif %}<span class="{% if self %}self{% endif %}{% if ally %}ally{% endif %}{% if friend %}friend{% endif %}{% if enemy %}enemy{% endif %}">{{name}}</span>, 
-				{% if data_alliance %}{{rank_label}}{% endif %}{% if noalliance %}indépendant{% endif %}
+				<td valign="top">{% if alliancetag %}<a href="/game/alliance/?tag={{alliancetag}}" class="{% if self %}self{% endif %}{% if ally %}ally{% endif %}{% if friend %}friend{% endif %}{% if enemy %}enemy{% endif %}">[{{alliancetag}}]</a>&nbsp;{% endif %}<span class="{% if self %}self{% endif %}{% if ally %}ally{% endif %}{% if friend %}friend{% endif %}{% if enemy %}enemy{% endif %}">{{name}}</span>, 
+				{% if alliancetag %}{{rank_label}}{% else %}indépendant{% endif %}
 				<br/>
 				Date d'arrivée:&nbsp;{{regdate|timezone:"Europe/Paris"|date:"d M Y H:i"}}<br/>
 				<br/>
