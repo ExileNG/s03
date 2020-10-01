@@ -25,7 +25,8 @@ class View(GlobalView):
         if self.fleetid == 0:
             return HttpResponseRedirect("/game/fleets/")
         
-        self.RetrieveFleetOwnerId(self.fleetid)
+        if not self.RetrieveFleetOwnerId(self.fleetid):
+            return HttpResponseRedirect("/game/fleets/")
         
         self.TransferResourcesViaPost(self.fleetid)
         
@@ -43,8 +44,10 @@ class View(GlobalView):
                 " FROM vw_fleets as f" +\
                 " WHERE (ownerid=" + str(self.UserId) + " OR (shared AND owner_alliance_id=" + str(self.can_command_alliance_fleets) + ")) AND id=" + str(self.fleetid)
         oRs = oConnExecute(query)
-    
-        self.fleet_owner_id = oRs[0]
+        if oRs:
+            self.fleet_owner_id = oRs[0]
+            return True
+        else: return False
     
     # display fleet info
     def DisplayExchangeForm(self, fleetid):

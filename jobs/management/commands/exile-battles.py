@@ -15,7 +15,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         connectDB()
         start = timezone.now()
-        while timezone.now() - start < timedelta(seconds=59):
+        while timezone.now() - start < timedelta(seconds=55):
             oRss = oConnExecuteAll("SELECT id, COALESCE(sp_get_user(ownerid), ''), galaxy, sector, planet FROM nav_planet WHERE next_battle <= now() LIMIT 1;")
             if oRss:
                 for oRs in oRss:
