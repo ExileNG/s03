@@ -44,6 +44,7 @@
 	{% elif message.type == 210 %}Invasion ennemie : perte d'une planète.
 	{% elif message.type == 211 %}Invasion ennemie repoussée !
 	{% elif message.type == 212 %}Invasion repoussée.
+	{% elif message.type == 213 %}Résistance éliminée
 	{% elif message.type == 214 %}Invasion réussie !
 	{% elif message.type == 220 %}Prime de destruction
 	{% elif message.type == 300 %}Eurêka !
@@ -104,6 +105,8 @@
 	Vous pouvez accéder au <a href="/game/invasion/?id={{message.invasionid}}">rapport d'invasion</a>.
 	{% elif message.type == 212 %}Notre tentative pour prendre la planète <a href="/game/map/?g={{message.g}}&s={{message.s}}">{{message.planetname}} ({{message.g}}.{{message.s}}.{{message.p}})</a> a lamentablement échoué.<br/>
 	Vous pouvez accéder au <a href="/game/invasion/?id={{message.invasionid}}">rapport d'invasion</a> que nous avons pu établir suite aux indications de nos soldats tombés vaillament au combat.
+	{% elif message.type == 213 %}Nous avons exterminé toute résistance ennemie sur la planète <a href="/game/map/?g={{message.g}}&s={{message.s}}">{{message.planetname}} ({{message.g}}.{{message.s}}.{{message.p}})</a>.<br/>
+	Vous pouvez accéder au <a href="/game/invasion/?id={{message.invasionid}}">rapport d'invasion</a>.
 	{% elif message.type == 214 %}Nous avons pris la planète <a href="/game/map/?g={{message.g}}&s={{message.s}}">{{message.planetname}} ({{message.g}}.{{message.s}}.{{message.p}})</a> !<br/>
 	Vous pouvez accéder au <a href="/game/invasion/?id={{message.invasionid}}">rapport d'invasion</a>.
 	{% elif message.type == 220 %}La destruction récente de flottes de fossoyeur nous a rapporté la somme de <img src="{{PATH_IMAGES}}/interface/credits.gif" class="res" width="16" height="16"> {{message.credits|intcomma}}.
