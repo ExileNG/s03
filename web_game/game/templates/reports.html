@@ -30,9 +30,12 @@
 	<td width="90%" valign="top">
 	<div class="subject">{{message.date|timezone:"Europe/Paris"|date:"d M Y H:i"}}{% if message.nation %} | <a href="/game/nation/?name={{message.nation}}">{{message.nation}}</a>{% endif %} |
 	{% if message.type == 100 %}Invitation d'alliance.
+	{% elif message.type == 110 %}Demande de financement.
+	{% elif message.type == 112 %}Annulation de la demande de financement.
 	{% elif message.type == 120 %}Invitation d'un nouveau membre.
 	{% elif message.type == 122 %}Invitation déclinée.
 	{% elif message.type == 130 %}Invitation acceptée.
+	{% elif message.type == 131 %}Départ de membre.
 	{% elif message.type == 132 %}Exclusion de membre.
 	{% elif message.type == 160 %}Nous entrons en guerre !
 	{% elif message.type == 171 %}PNA rompu.
@@ -42,6 +45,7 @@
 	{% elif message.type == 211 %}Invasion ennemie repoussée !
 	{% elif message.type == 212 %}Invasion repoussée.
 	{% elif message.type == 214 %}Invasion réussie !
+	{% elif message.type == 220 %}Prime de destruction
 	{% elif message.type == 300 %}Eurêka !
 	{% elif message.type == 310 %}Production et coût d'entretien.
 	{% elif message.type == 320 %}Un commandant a récemment eu une augmentation
@@ -56,6 +60,8 @@
 	{% elif message.type == 505 %}Achat effectué sur une de nos planètes.
 	{% elif message.type == 600 %}Nouvelle planète.
 	{% elif message.type == 602 %}Soulèvement.
+	{% elif message.type == 710 %}Bulletin d'alerte : tempête solaire !
+	{% elif message.type == 711 %}Fin d'alerte : tempête solaire.
 	{% elif message.type == 720 %}Vol de ressources.
 	{% elif message.type == 721 %}Des émeutes éclatent.
 	{% elif message.type == 723 %}Une expérience a mal tourné.
@@ -76,9 +82,15 @@
 	<div class="body">
 	{% if message.type == 100 %}L'alliance <a href="/game/alliance/?tag={{message.alliancetag}}">[{{message.alliancetag}}] {{message.alliancename}}</a> nous propose de les rejoindre.<br/>
 	Vous devriez réfléchir à cette offre et répondre en accédant à <a href="/game/alliance-invitations/">cette page</a>.
+	{% elif message.type == 110 %}La nation <a href="/game/nation/?name={{message.username}}">{{message.username}}</a> a formulé une demande de financement s'élevant à <img src="{{PATH_IMAGES}}/interface/credits.gif" title="Crédits" class="icon" width="16" height="16"> {{message.credits|intcomma}} crédits<script>var d="{{message.description}}"; if(d!='') document.write(' pour la raison suivante : '+d);</script>.<br/>
+	Vous pouvez accéder à toutes les demandes en cours sur <a href="/game/alliance-wallet/?cat=2">cette page</a>.
+	{% elif message.type == 111 %}La nation <a href="/game/nation/?name={{message.username}}">{{message.username}}</a> a modifié sa demande de financement et demande désormais <img src="{{PATH_IMAGES}}/interface/credits.gif" title="Crédits" class="icon" width="16" height="16">  {{message.credits|intcomma}} crédits<script>var d="{{message.description}}"; if(d!='') document.write(' pour la raison suivante : '+d);</script>.<br/>
+	Vous pouvez accéder à toutes les demandes en cours sur <a href="/game/alliance-wallet/?cat=2">cette page</a>.
+	{% elif message.type == 112 %}La nation <a href="/game/nation/?name={{message.username}}">{{message.username}}</a> a annulé sa demande de financement.
 	{% elif message.type == 120 %}Le recruteur <a href="/game/nation/?name={{message.nation}}">{{message.nation}}</a> a invité la nation <a href="/game/nation/?name={{message.invitedusername}}">{{message.invitedusername}}</a> à rejoindre notre alliance.
 	{% elif message.type == 122 %}La nation <a href="/game/nation/?name={{message.nation}}">{{message.nation}}</a> a décliné notre invitation.
 	{% elif message.type == 130 %}La nation <a href="/game/nation/?name={{message.nation}}">{{message.nation}}</a> a rejoint notre alliance.
+	{% elif message.type == 131 %}La nation <a href="/game/nation/?name={{message.nation}}">{{message.nation}}</a> a décidé de quitter notre alliance.
 	{% elif message.type == 132 %}La nation <a href="/game/nation/?name={{message.nation}}">{{message.nation}}</a> va être exclue de l'alliance<script>if('{{message.username}}'!='') document.write(' (action décidée par <a href="/game/nation/?name={{message.username}}">{{message.username}}</a>)');</script>.
     {% elif message.type == 160 %}L'alliance <a href="/game/alliance/?tag={{message.alliancetag}}">[{{message.alliancetag}}] {{message.alliancename}}</a> vient de nous déclarer la guerre.
     {% elif message.type == 171 %}L'alliance <a href="/game/alliance/?tag={{message.alliancetag}}">[{{message.alliancetag}}] {{message.alliancename}}</a> a décidé de rompre le pacte de non-aggression que nous avions.
@@ -94,6 +106,7 @@
 	Vous pouvez accéder au <a href="/game/invasion/?id={{message.invasionid}}">rapport d'invasion</a> que nous avons pu établir suite aux indications de nos soldats tombés vaillament au combat.
 	{% elif message.type == 214 %}Nous avons pris la planète <a href="/game/map/?g={{message.g}}&s={{message.s}}">{{message.planetname}} ({{message.g}}.{{message.s}}.{{message.p}})</a> !<br/>
 	Vous pouvez accéder au <a href="/game/invasion/?id={{message.invasionid}}">rapport d'invasion</a>.
+	{% elif message.type == 220 %}La destruction récente de flottes de fossoyeur nous a rapporté la somme de <img src="{{PATH_IMAGES}}/interface/credits.gif" class="res" width="16" height="16"> {{message.credits|intcomma}}.
 	{% elif message.type == 300 %}Nos scientifiques ont terminé la recherche sur "{{message.researchname}}".<br/>
 	Ils sont prêts pour de <a href="/game/research/">nouvelles recherches</a>.
 	{% elif message.type == 310 %}Les coûts d'entretien et de fonctionnement concernant la dernière période s'élèvent à <img src="{{PATH_IMAGES}}/interface/credits.gif" class="res" width="16" height="16"> {{message.credits|intcomma}}.<br/><br/>
@@ -162,13 +175,15 @@
 		document.write('ils se sont parfaitement intégrés et travaillent désormais sous nos ordres.');
 		}
 	</script>
-	Nous avons payé la somme de <img src="{{PATH_IMAGES}}/interface/credits.gif" title="Crédits" class="icon" width="16" height="16"> {{credits|intcomma}} crédits.
+	Nous avons payé la somme de <img src="{{PATH_IMAGES}}/interface/credits.gif" title="Crédits" class="icon" width="16" height="16"> {{message.credits|intcomma}} crédits.
     {% elif message.type == 600 %}Nous occupons désormais la planète <a href="/game/map/?g={{message.g}}&s={{message.s}}">{{message.planetname}} ({{message.g}}.{{message.s}}.{{message.p}})</a>.<br/>
 	Nous devrions vérifier les installations et <a href="/game/buildings/?planet={{message.planetid}}">construire les bâtiments</a> dont nous avons besoin.
 	{% elif message.type == 602 %}Suite à votre ordre, nous avons essayé d'abandonner la planète <a href="/game/map/?g={{message.g}}&s={{message.s}}">({{message.g}}.{{message.s}}.{{message.p}})</a>, malheureusement, d'importantes manifestations se sont déclarées dans toute la colonie pour montrer leur indignation face à cette décision.<br/>
 	Les travailleurs qui étaient censés détruire les bâtiments de la colonie ont été arrêtés avant même de commencer. Il s'en est suivi un coup d'état et une déclaration d'indépendance émanant des dirigeants temporaires de la planète.<br/>
 	Nous ne contrôlons plus la planète et les bâtiments sont restés fonctionnels ! Une autre nation pourrait s'en emparer et s'en servir contre nous.<br/>
 	Nous perdons 20 points de contrôle sur toutes nos planètes.
+	{% elif message.type == 710 %}De violentes éruptions solaires provoquent des orages électromagnétiques sur la planète <a href="/game/map/?g={{message.g}}&s={{message.s}}">{{message.planetname}} ({{message.g}}.{{message.s}}.{{message.p}})</a>. Ces orages chargent le sol et des courts-circuits peuvent se produire entre les appareils électriques et la terre. Afin d'éviter tout accident, nous sommes obligés de baisser notre production d'environ 60% jusqu'à ce que ces éruptions se terminent.
+	{% elif message.type == 711 %}Les éruptions solaires ont cessé sur <a href="/game/map/?g={{message.g}}&s={{message.s}}">{{message.planetname}} ({{message.g}}.{{message.s}}.{{message.p}})</a>. Nous reprenons une activité normale.
 	{% elif message.type == 720 %}Une intrusion a eu lieu dans nos entrepôts de <a href="/game/training/?planet={{message.planetid}}">{{message.planetname}} ({{message.g}}.{{message.s}}.{{message.p}})</a>. Après inventaire des stocks, il semblerait <script>
 	if({{message.ore}} > 0 || {{message.hydrocarbon}} > 0) {
 		if({{message.ore}} > 0){

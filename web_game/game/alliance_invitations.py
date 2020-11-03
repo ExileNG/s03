@@ -35,13 +35,10 @@ class View(GlobalView):
         elif action == "decline":
             oConnExecute("SELECT sp_alliance_decline_invitation(" + str(self.UserId) + "," + dosql(alliance_tag) + ")")
         elif action == "leave":
-            if self.request.session.get(self.sLeaveCost) and request.POST.get("leave") == 1:
-                oRs = oConnExecute("SELECT sp_alliance_leave(" + str(self.UserId) + "," + self.request.session.get(self.sLeaveCost) + ")")
+            if request.POST.get("leave", "") == "1":
+                oRs = oConnExecute("SELECT sp_alliance_leave(" + str(self.UserId) + ",0)")
                 if oRs[0] == 0:
                     return HttpResponseRedirect("/game/alliance/")
-
-            else:
-                self.leave_status = "not_enough_credits"
 
         return self.DisplayInvitations()
 

@@ -24,12 +24,12 @@ class View(GlobalView):
         # accept/deny money self.request
         #
         action = self.request.GET.get("a", "")
-        id = self.request.GET.get("id", "")
+        id = ToInt(self.request.GET.get("id"), 0)
 
         if action == "accept":
-            oConnExecute("SELECT sp_alliance_money_accept(" + str(self.UserId) + "," + dosql(id) + ")")
+            oConnExecute("SELECT sp_alliance_money_accept(" + str(self.UserId) + "," + str(id) + ")")
         elif action == "deny":
-            oConnExecute("SELECT sp_alliance_money_deny(" + str(self.UserId) + "," + dosql(id) + ")")
+            oConnExecute("SELECT sp_alliance_money_deny(" + str(self.UserId) + "," + str(id) + ")")
 
         #
         # player gives or self.requests credits
@@ -270,8 +270,8 @@ class View(GlobalView):
         if oRs == None:
             content.Parse("request_none")
         else:
-            content.AssignValue("credits", oRs[0])
-            content.AssignValue("description", oRs[1])
+            content.AssignValue("req_credits", oRs[0])
+            content.AssignValue("req_description", oRs[1])
             if (oRs[2]) and not oRs[2]: content.Parse("request_denied")
             else: content.Parse("request_submitted")
 
@@ -290,7 +290,7 @@ class View(GlobalView):
             
             i = 0
             list = []
-            content.AssignValue("requests", list)
+            content.AssignValue("entries", list)
             for oRs in oRss:
                 item = {}
                 list.append(item)

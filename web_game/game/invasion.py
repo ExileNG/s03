@@ -47,7 +47,7 @@ class View(GlobalView):
                 oRs2 = oConnExecute(query)
                 if oRs2 == None:
                     return HttpResponseRedirect("/game/overview/")
-                viewername = oRs2(0)
+                viewername = oRs2[0]
             else:
                 return HttpResponseRedirect("/game/overview/")
 

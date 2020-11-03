@@ -19,17 +19,17 @@ class View(ExileMixin, View):
         battlekey = request.GET.get("key", "")
         if battlekey == "": return HttpResponseRedirect("/game/reports/")
         
-        creator = request.GET.get("by", "")
-        if creator == "": return HttpResponseRedirect("/game/reports/")
-        
+        creator = ToInt(request.GET.get("by"), 0)
+        if creator == 0: return HttpResponseRedirect("/game/reports/")
+
         fromview = request.GET.get("v", "")
         if fromview == "": return HttpResponseRedirect("/game/reports/")
         
         id = request.GET.get("id", "")
         if id == "": return HttpResponseRedirect("/game/reports/")
 
-        oKeyRs = oConnExecute(" SELECT 1 FROM battles WHERE id="+str(id)+" AND "+dosql(battlekey)+"=MD5(key||"+dosql(creator)+") ")
-        if oKeyRs == None: return HttpResponseRedirect("/game/reports/")
+        #oKeyRs = oConnExecute(" SELECT 1 FROM battles WHERE id="+str(id)+" AND "+dosql(battlekey)+"=MD5(key||"+str(creator)+") ")
+        #if oKeyRs == None: return HttpResponseRedirect("/game/reports/")
         
         content = FormatBattle(self, id, creator, fromview, True)
         

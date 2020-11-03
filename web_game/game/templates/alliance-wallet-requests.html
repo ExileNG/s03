@@ -9,8 +9,8 @@
 	<table class="clear">
 	<tr><td colspan="2">&nbsp;</td></tr>
 	<tr><td>Trésorerie: </td><td align="left">{{player_credits|intcomma}} crédits</td></tr>
-	<tr><td>Financement: </td><td align="left"><input type="text" name="credits" value="{{credits}}" size=8 maxlength=8> crédits</td></tr>
-	<tr><td>Description: </td><td align="left"><input type="text" name="description" value="{{description}}" size=64 maxlength=64></td></tr>
+	<tr><td>Financement: </td><td align="left"><input type="text" name="credits" value="{{req_credits}}" size=8 maxlength=8> crédits</td></tr>
+	<tr><td>Description: </td><td align="left"><input type="text" name="description" value="{{req_description}}" size=64 maxlength=64></td></tr>
 	<tr><td>Etat: </td><td align="left">{% if submitted %}<span class="pending">en cours ...</span>{% endif %}{% if none %}aucune demande de financement{% endif %}{% if denied %}<span class="denied">demande refusée</span>{% endif %}</td></tr>
 	<tr><td colspan=2>&nbsp;</td></tr>
 	<tr><td colspan=2 align=center><input type="submit" name="request" value="Demander"> <input type="submit" name="cancel" value="Annuler"></td></tr>
@@ -26,7 +26,7 @@
 <tr class="header"><td>Date</td><td>Nation</td><td>Crédits</td><td>Description</td><td>Action</td></tr>
 {% for entry in entries %}
 <tr class="smallitem">
-<td nowrap>{{date}}</td><td nowrap>{{nation}}</td><td align=right nowrap>{{credits|intcomma}}</td><td>{{description}}</td><td align="center" nowrap><a href="?cat={{walletpage}}&a=accept&id={{id}}">Accepter</a> - <a href="?cat={{walletpage}}&a=deny&id={{id}}">Refuser</a></td>
+<td nowrap>{{entry.date}}</td><td nowrap>{{entry.nation}}</td><td align=right nowrap>{{entry.credits|intcomma}}</td><td>{{entry.description}}</td><td align="center" nowrap><a href="?cat={{walletpage}}&a=accept&id={{entry.id}}">Accepter</a> - <a href="?cat={{walletpage}}&a=deny&id={{entry.id}}">Refuser</a></td>
 </tr>
 {% endfor %}
 {% if norequests %}
