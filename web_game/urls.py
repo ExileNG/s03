@@ -4,7 +4,7 @@ from django.urls import path
 from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
 
-from web_game.game import error_500
+#from web_game.game import error_500
 
 from web_game import connect
 
@@ -64,7 +64,7 @@ from web_game.game import wait
 
 
 ################################################################################
-handler500 = 'error_500.View'
+#handler500 = 'error_500.View'
 #-------------------------------------------------------------------------------
 urlpatterns = [
 	#---------------------------------------------------------------------------

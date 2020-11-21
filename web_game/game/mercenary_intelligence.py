@@ -388,6 +388,7 @@ class View(GlobalView):
                             " WHERE planetid=" + str(planet) + " AND build_status IS NOT NULL"
 
                     oRss = oConnExecuteAll(query)
+                    i = 0
                     for oRs in oRss:
                         
                         rand1 = random()
@@ -411,6 +412,7 @@ class View(GlobalView):
                                 " VALUES (" + str(reportid) + ", " + str(oRs[0]) + ", " + str(oRs[1]) + ", now() + " + str(oRs[2]) + "* interval '1 second', " + str(qty) + " )"
 
                         oConnDoQuery(query)
+                        i += 1
 
                 if self.level >= 0:
 
