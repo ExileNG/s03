@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% load tz %}
 {% load humanize %}
-
+{% load bbcode_tags %}
 {% block content %}
 <script>
 var senders=new Array();
@@ -103,7 +103,7 @@ document.onkeydown = keydown;
 	<td valign="top">
 	<div class="subject">
 	{{mail.date|timezone:"Europe/Paris"}} | {{mail.subject}}{% if mail.money %} | Somme reçue : <img src="{{PATH_IMAGES}}/interface/credits.gif" title="Crédits" class="icon" width=16 height=16> {{mail.moneyamount|intcomma}}{% endif %} {% if mail.to_admins %}(Aux administrateurs){% endif %}{% if mail.to_alliance %}(À l'alliance){% endif %}</div>
-	<div class="body{% if mail.from_admin %}{% endif %}">{% if mail.html %}{{mail.body|safe}}{% endif %}{% if mail.bbcode %}{{mail.bodybb}}{% endif %}</div>
+	<div class="body{% if mail.from_admin %}{% endif %}">{% if mail.html %}{{mail.body|safe}}{% endif %}{% if mail.bbcode %}{{mail.bodybb|bbcode}}{% endif %}</div>
 	<hr/><a href="?a=reply&mailid={{mail.mailid}}" title="Répondre à {{mail.from}}">Répondre</a>
 	</td>
 </tr>

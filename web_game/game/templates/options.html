@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% load humanize %}
-
+{% load bbcode_tags %}
 {% block content %}
 <form method="post" action="?cat={{cat}}">{% csrf_token %}
 <table cellpadding=0 cellspacing=0>
@@ -41,7 +41,7 @@
 	</td>
 </tr>
 
-<tr class="item"><td colspan="2"><p>{{description|safe}}</p></td></tr>
+<tr class="item"><td colspan="2"><p>{{description|safe|bbcode}}</p></td></tr>
 
 <tr class="clear"><td colspan="2">&nbsp;</td></tr>
 

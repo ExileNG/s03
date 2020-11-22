@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     #---------------------------------------------------------------------------
-    #'precise_bbcode',
+    'precise_bbcode',
     'impersonate',
     #---------------------------------------------------------------------------
     'jobs',

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% load tz %}
 {% load humanize %}
-
+{% load bbcode_tags %}
 {% block content %}
 <form method="get" action="/game/nation/">{% csrf_token %}
 <table class="default">
