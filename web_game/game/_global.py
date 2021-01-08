@@ -290,7 +290,7 @@ class GlobalView(ExileMixin, View):
                     tpl_header.AssignValue("special2", getBuildingLabel(item[0]))
                 else:
                     tpl_header.AssignValue("special3", getBuildingLabel(item[0]))
-                    tpl_header.AssignValue("special")
+                    tpl_header.Parse("special")
         
                 i = i + 1
     
