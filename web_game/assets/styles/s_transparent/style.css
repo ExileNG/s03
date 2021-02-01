@@ -323,6 +323,10 @@ input.button100 {
 	width:100px;
 }
 
+input[type=number] {
+    max-width:55px;
+}
+
 /* img related */
 
 img.icon {

@@ -596,12 +596,12 @@ class View(GlobalView):
                 planet["space"] = oRs[7]
                 planet["a_ore"] = oRs[18]
                 planet["a_hydrocarbon"] = oRs[19]
-                planet["vortex_strength"] = oRs[23]
+                planet["vortex_strength"] = oRs[22]
                 planet["info"] = True
             else:
                 planet["floor"] = ""
                 planet["space"] = ""
-                planet["vortex_strength"] = oRs[23]
+                planet["vortex_strength"] = oRs[22]
                 planet["noinfo"] = ""
 
             if displayResources and (oRs[10] > 0 or oRs[11] > 0):

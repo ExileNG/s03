@@ -186,7 +186,7 @@ function submitchanges() {
 		<td>{{ship.name}}</td>
 		<td align="right">{{ship.cargo_capacity|intcomma}}</td>
 		<td align="right" name="origship{{ship.id}}">{{ship.quantity|intcomma}}</td>
-		<td><input type="text" name="transfership{{ship.id}}" value="{{ship.transfer}}" size=8> <a href="javascript:setval('transfership{{ship.id}}', {{ship.quantity}})">max</a></td>
+		<td><input type=number min=0 name="transfership{{ship.id}}" value="{{ship.transfer}}" size=8> <a href="javascript:setval('transfership{{ship.id}}', {{ship.quantity}})">max</a></td>
 		<script>ships.push(new Array({{ship.id}},{{ship.cargo_capacity}},{{ship.quantity}}));</script>
 	</tr>
 	{% endfor %}
@@ -212,27 +212,27 @@ function submitchanges() {
 	<tr>
 		<td>Minerai</td>
 		<td colspan=2 align=right name="orig_ore">{{available_ore|intcomma}}</td>
-		<td><input type="text" name="load_ore" value="{{t_ore}}" size=8> <a href="javascript:setmaximum('ore', {{available_ore}})">max</a></td>
+		<td><input type=number min=0 name="load_ore" value="{{t_ore}}" size=8> <a href="javascript:setmaximum('ore', {{available_ore}})">max</a></td>
 	</tr>
 	<tr>
 		<td>Hydrocarbures</td>
 		<td colspan=2 align=right name="orig_hydrocarbon">{{available_hydrocarbon|intcomma}}</td>
-		<td><input type="text" name="load_hydrocarbon"  value="{{t_hydrocarbon}}"size=8> <a href="javascript:setmaximum('hydrocarbon', {{available_hydrocarbon}})">max</a></td>
+		<td><input type=number min=0 name="load_hydrocarbon"  value="{{t_hydrocarbon}}"size=8> <a href="javascript:setmaximum('hydrocarbon', {{available_hydrocarbon}})">max</a></td>
 	</tr>
 	<tr>
 		<td>Scientifiques</td>
 		<td colspan=2 align=right name="orig_scientists">{{available_scientists|intcomma}}</td>
-		<td><input type="text" name="load_scientists" value="{{t_scientists}}" size=8> <a href="javascript:setmaximum('scientists', {{available_scientists}})">max</a></td>
+		<td><input type=number min=0 name="load_scientists" value="{{t_scientists}}" size=8> <a href="javascript:setmaximum('scientists', {{available_scientists}})">max</a></td>
 	</tr>
 	<tr>
 		<td>Soldats</td>
 		<td colspan=2 align=right name="orig_soldiers">{{available_soldiers|intcomma}}</td>
-		<td><input type="text" name="load_soldiers" value="{{t_soldiers}}" size=8> <a href="javascript:setmaximum('soldiers', {{available_soldiers}})">max</a></td>
+		<td><input type=number min=0 name="load_soldiers" value="{{t_soldiers}}" size=8> <a href="javascript:setmaximum('soldiers', {{available_soldiers}})">max</a></td>
 	</tr>
 	<tr>
 		<td>Travailleurs</td>
 		<td colspan=2 align=right name="orig_workers">{{available_workers|intcomma}}</td>
-		<td><input type="text" name="load_workers" value="{{t_workers}}" size=8> <a href="javascript:setmaximum('workers', {{available_workers}})">max</a></td>
+		<td><input type=number min=0 name="load_workers" value="{{t_workers}}" size=8> <a href="javascript:setmaximum('workers', {{available_workers}})">max</a></td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td>

@@ -26,7 +26,7 @@ function updateNeeds() {
 	<td align=right><img src="{{PATH_IMAGES}}/interface/hydrocarbon.gif" class=res title="Hydrocarbure" width=16 height=16> {{scientist_hydrocarbon}}</td>
 	<td align=right><img src="{{PATH_IMAGES}}/interface/credits.gif" class=res title="Crédits" width=16 height=16> {{scientist_credits}}</td>
 	<td align=center>{{scientists}} / {{scientists_capacity}}</td>
-	<td align=center>{% if input_scientists %}<input type=text name=scientists id=scientists size=5 maxlength=5 onkeyup="updateNeeds()" >{% endif %}{% if max_scientists %}<p class="error">Maximum atteint</p>{% endif %}</td>
+	<td align=center>{% if input_scientists %}<input type=number min=0 name=scientists id=scientists size=5 maxlength=5 onkeyup="updateNeeds()" >{% endif %}{% if max_scientists %}<p class="error">Maximum atteint</p>{% endif %}</td>
 </tr>
 <tr class="item">
 	<td nowrap><img src="{{PATH_IMAGES}}/interface/soldiers.gif" class=res title="Soldats" width="16" height="16"> Soldat</td>
@@ -34,7 +34,7 @@ function updateNeeds() {
 	<td align=right><img src="{{PATH_IMAGES}}/interface/hydrocarbon.gif" class=res title="Hydrocarbure" width=16 height=16> {{soldier_hydrocarbon}}</td>
 	<td align=right><img src="{{PATH_IMAGES}}/interface/credits.gif" class=res title="Crédits" width=16 height=16> {{soldier_credits}}</td>
 	<td align=center{% if not_enough_soldiers %} class="low"{% endif %}>{{soldiers}} / {{soldiers_capacity}}</td>
-	<td align=center>{% if input_soldiers %}<input type=text name=soldiers id=soldiers size=5 maxlength=5 onkeyup="updateNeeds()" >{% endif %}{% if max_soldiers %}<p class="error">Maximum atteint</p>{% endif %}</td>
+	<td align=center>{% if input_soldiers %}<input type=number min=0 name=soldiers id=soldiers size=5 maxlength=5 onkeyup="updateNeeds()" >{% endif %}{% if max_soldiers %}<p class="error">Maximum atteint</p>{% endif %}</td>
 </tr>
 <tr class="item">
 	<td>&nbsp;</td>

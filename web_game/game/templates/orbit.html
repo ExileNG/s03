@@ -80,7 +80,7 @@ description{{ship.id}}="<table><tr valign='top'><td><span class=title>Descriptio
 			<td align="right" width="10%">x{{ship.quantity}}</td>
 		</tr></table>
 	</td>
-	<td align="center" width="15%" nowrap><input type="text" size="5" value="{{ship.ship_quantity}}" id="s{{ship.id}}" name="s{{ship.id}}"> <a href="#" onclick="setval('s{{ship.id}}', {{ship.quantity}}); return false;">max</a></td>
+	<td align="center" width="15%" nowrap><input type="number" min="0" value="{{ship.ship_quantity}}" id="s{{ship.id}}" name="s{{ship.id}}"> <a href="#" onclick="setval('s{{ship.id}}', {{ship.quantity}}); return false;">max</a></td>
 </tr>
 {% endfor %}
 <tr class="smallitem"><td colspan=2 align=center><input type="submit" value="Former la flotte"></td></tr>

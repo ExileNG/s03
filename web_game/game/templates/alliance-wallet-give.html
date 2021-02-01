@@ -9,7 +9,7 @@
 	<table class="clear">
 	<tr><td colspan="2">&nbsp;</td></tr>
 	<tr><td>Trésorerie: </td><td align="left">{{player_credits|intcomma}} crédits</td></tr>
-	<tr><td>Somme: </td><td align="left"><input type="text" name="credits" value="{{credits}}" size=8 maxlength=8> crédits</td></tr>
+	<tr><td>Somme: </td><td align="left"><input type="number" min="0" name="credits" value="{{credits}}" size=8 maxlength=8> crédits</td></tr>
 	<tr><td>Description: </td><td align="left"><input type="text" name="description" value="{{description}}" size=64 maxlength=64></td></tr>
 	<tr><td colspan="2">&nbsp;</td></tr>
 	{% if can_give %}

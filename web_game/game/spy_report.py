@@ -41,7 +41,7 @@ class View(GlobalView):
             self.level = oRs[4]
             self.spydate = oRs[5]
 
-            if oRs[6]: self.credits = oRs[6]
+            self.credits = oRs[6]
             self.spotted = oRs[7]
             if oRs[8]: self.target = oRs[8]
 
@@ -136,8 +136,8 @@ class View(GlobalView):
             cat["list"].append(item)
 
         # display spied nation credits if possible
-        if credits:
-            content.AssignValue("credits", credits)
+        if self.credits:
+            content.AssignValue("credits", self.credits)
             content.Parse("credits")
 
         if nbresearch != 0:

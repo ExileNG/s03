@@ -115,7 +115,7 @@ tiptext = $("hinttext");
 </td>
 
 <td align="center" style="padding:0;margin:0">
-	{% if ship.build %}<input type="text" name="s{{ship.id}}" onkeyup="updateNeeds()" size=3 maxlength="5" style="height:18px">{% endif %}
+	{% if ship.build %}<input type="number" min="0" name="s{{ship.id}}" onkeyup="updateNeeds()" size=3 maxlength="5" style="height:18px">{% endif %}
 	{% if ship.buildings_required %}<div class="error2">bâtiments requis</div>{% endif %}
 	{% if ship.notenoughresources %}<div class="error">ressources insuffisantes</div>{% endif %}
 	{% if ship.cant_build %}&nbsp;{% endif %}

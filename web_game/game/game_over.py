@@ -64,7 +64,7 @@ class View(ExileMixin, View):
                             changeNameError = "check_username"
                         else:
                             # try to rename user and catch any error
-                            oConnDoQuery("UPDATE users SET alliance_id=None WHERE id=" + str(self.UserId))
+                            oConnDoQuery("UPDATE users SET alliance_id=NULL WHERE id=" + str(self.UserId))
 
                             oConnDoQuery("UPDATE users SET login=" + dosql(request.POST.get("login")) + " WHERE id=" + str(self.UserId))
 

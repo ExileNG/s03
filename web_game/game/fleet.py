@@ -33,7 +33,8 @@ class View(GlobalView):
 
         self.RetrieveFleetOwnerId(fleetid)
 
-        self.ExecuteOrder(fleetid)
+        response = self.ExecuteOrder(fleetid)
+        if response: return response
 
         return self.DisplayFleet(fleetid)
 
@@ -273,7 +274,7 @@ class View(GlobalView):
         fleets = []
         
         fleetCount = 0
-        if oRs[34] != -1:
+        if oRs[34] != -1 and oRs[10]:
             query = "SELECT vw_fleets.id, vw_fleets.name, size, signature, speed, cargo_capacity-cargo_free, cargo_capacity, action, ownerid, owner_name, alliances.tag, sp_relation("+str(self.UserId)+",ownerid)" + \
                     " FROM vw_fleets" + \
                     "    LEFT JOIN alliances ON alliances.id=owner_alliance_id" + \
@@ -724,6 +725,7 @@ class View(GlobalView):
 
         if self.request.GET.get("action") == "share":
             oConnDoQuery("UPDATE fleets SET shared=not shared WHERE ownerid=" + str(self.fleet_owner_id) + " AND id=" + str(fleetid))
+            return HttpResponseRedirect("/game/fleet/?id=" + str(fleetid))
         elif self.request.GET.get("action") == "abandon":
             oConnExecute("SELECT sp_abandon_fleet(" + str(self.UserId) + "," + str(fleetid) + ")")
         elif self.request.GET.get("action") == "attack":
