@@ -90,13 +90,13 @@
 		<table cellpadding=0 cellspacing=2 class="clear" width="100%">
 		<tr>
 			<td width="16"><img src="{{PATH_IMAGES}}/interface/ore.gif" title="Minerai" width="16" height="16"></td>
-			<td width="1%" nowrap><input type="text" id="o{{planet.planet_id}}" name="o{{planet.planet_id}}" value="{{planet.ore}}" onkeyup="updateprice({{planet.planet_id}})" size="3" maxlength="4"> x1000 (<img src="{{PATH_IMAGES}}/interface/credits.gif" class="icon" title="Credits" width="16" height="16"> {{planet.ore_price|floatformat:2|intcomma}})</td>
+			<td width="1%" nowrap><input type="number" min="0" id="o{{planet.planet_id}}" name="o{{planet.planet_id}}" value="{{planet.ore}}" onkeyup="updateprice({{planet.planet_id}})" size="3" maxlength="4"> x1000 (<img src="{{PATH_IMAGES}}/interface/credits.gif" class="icon" title="Credits" width="16" height="16"> {{planet.ore_price|floatformat:2|intcomma}})</td>
 			<td align="left"><a href="javascript:setval('o{{planet.planet_id}}', {{planet.ore_max}}); updateprice({{planet.planet_id}})">Max</a></td>
 			<td><a href="javascript:setval('o{{planet.planet_id}}', 0); setval('h{{planet.planet_id}}', 0); updateprice({{planet.planet_id}})">Rien</a></td>
 		</tr>
 		<tr>
 			<td width="16"><img src="{{PATH_IMAGES}}/interface/hydrocarbon.gif" title="Hydrocarbure" width="16" height="16"></td>
-			<td width="1%" nowrap><input type="text" id="h{{planet.planet_id}}" name="h{{planet.planet_id}}" value="{{planet.hydrocarbon}}" onkeyup="updateprice({{planet.planet_id}})" size="3" maxlength="4"> x1000 (<img src="{{PATH_IMAGES}}/interface/credits.gif" class="icon" title="Credits" width="16" height="16"> {{planet.hydrocarbon_price|floatformat:2|intcomma}})</td>
+			<td width="1%" nowrap><input type="number" min="0" id="h{{planet.planet_id}}" name="h{{planet.planet_id}}" value="{{planet.hydrocarbon}}" onkeyup="updateprice({{planet.planet_id}})" size="3" maxlength="4"> x1000 (<img src="{{PATH_IMAGES}}/interface/credits.gif" class="icon" title="Credits" width="16" height="16"> {{planet.hydrocarbon_price|floatformat:2|intcomma}})</td>
 			<td align="left"><a href="javascript:setval('h{{planet.planet_id}}', {{planet.hydrocarbon_max}}); updateprice({{planet.planet_id}})">Max</a></td>
 			<td><a href="javascript:setval('o{{planet.planet_id}}', {{planet.ore_max}}); setval('h{{planet.planet_id}}', {{planet.hydrocarbon_max}}); updateprice({{planet.planet_id}})">Tout</a></td>
 		</tr>

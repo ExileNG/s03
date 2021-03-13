@@ -130,7 +130,7 @@ class View(GlobalView):
         return ret
     
     def HasEnoughStorageAfterDestruction(self, BuildingId):
-        ret = False
+        ret = True
     
         # 1/ if we want to destroy a building that increase max population: check that 
         # the population is less than the limit after the building destruction
@@ -140,26 +140,26 @@ class View(GlobalView):
         # too much ore/hydrocarbon
         for i in retrieveBuildingsCache():
             if BuildingId == i[0]:
-                if (i[1] > 0) and (self.pVacantWorkers < i[1]):
-                    ret = True
+                if i[1] > 0 and self.pVacantWorkers < i[1]:
+                    ret = False
                     break
     
                 # check if scientists/soldiers are lost
                 if self.pScientists > self.pScientistsCapacity-i[6]:
-                    ret = True
+                    ret = False
                     break
     
                 if self.pSoldiers > self.pSoldiersCapacity-i[7]:
-                    ret = True
+                    ret = False
                     break
     
                 # check if a storage building is destroyed
                 if self.pOre > self.pOreCapacity-i[3]:
-                    ret = True
+                    ret = False
                     break
     
                 if self.pHydrocarbon > self.pHydrocarbonCapacity-i[4]:
-                    ret = True
+                    ret = False
                     break
                     
         return ret
@@ -340,7 +340,7 @@ class View(GlobalView):
                         building["workers_required"] = True
                     elif self.HasBuildingThatDependsOn(BuildingId):
                         building["required"] = True
-                    elif self.HasEnoughStorageAfterDestruction(BuildingId):
+                    elif not self.HasEnoughStorageAfterDestruction(BuildingId):
                         building["capacity"] = True
                     else:
                         building["destroy"] = True
